@@ -700,11 +700,6 @@ companyLogo: {
   objectFit: 'contain',
 },
 contactIcon: {
-  width: '34px',
-  height: '34px',
-},
-
-contactIcon: {
     width: '34px',
     height: '34px',
   },
