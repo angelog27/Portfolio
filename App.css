@@ -100,3 +100,107 @@ a:hover {
 html {
   scroll-behavior: smooth;
 }
+
+/* Responsive Design - Mobile (360px - 600px) */
+@media (max-width: 768px) {
+  /* Hero section - stack vertically on mobile */
+  .hero {
+    flex-direction: column !important;
+  }
+
+  /* Image container - full width on mobile */
+  div[style*="flex: 0 0 40%"] {
+    flex: 1 1 100% !important;
+    min-height: 60vh !important;
+    padding: 40px !important;
+  }
+
+  /* Image size - smaller on mobile */
+  div[style*="width: 400px"][style*="height: 550px"] {
+    width: 280px !important;
+    height: 380px !important;
+  }
+
+  /* About section - full width on mobile */
+  div[style*="flex: 0 0 50%"] {
+    flex: 1 1 100% !important;
+    padding: 40px 24px !important;
+  }
+
+  /* Name - smaller on mobile */
+  h1[style*="font-size: 72px"] {
+    font-size: 48px !important;
+  }
+
+  /* Title - smaller on mobile */
+  h2[style*="font-size: 24px"] {
+    font-size: 20px !important;
+  }
+
+  /* Bio text - smaller on mobile */
+  p[style*="font-size: 18px"] {
+    font-size: 16px !important;
+  }
+
+  /* Contact icons - smaller spacing */
+  div[style*="gap: 32px"] {
+    gap: 20px !important;
+    flex-wrap: wrap;
+  }
+
+  /* Navigation tabs - stack on mobile */
+  nav {
+    flex-wrap: wrap !important;
+  }
+
+  nav button {
+    flex: 1 1 45% !important;
+    padding: 16px 12px !important;
+    font-size: 12px !important;
+  }
+
+  /* Content padding - less on mobile */
+  div[style*="padding: 120px 80px"] {
+    padding: 60px 24px !important;
+  }
+
+  /* Project layout - stack on mobile */
+  div[style*="display: flex"][style*="gap: 50px"] {
+    flex-direction: column !important;
+  }
+
+  /* Project images - full width on mobile */
+  div[style*="width: 600px"][style*="height: 400px"] {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 250px !important;
+  }
+
+  /* Skills grid - single column on mobile */
+  div[style*="grid-template-columns: repeat(2, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Card titles - smaller on mobile */
+  h3[style*="font-size: 32px"] {
+    font-size: 24px !important;
+  }
+}
+
+/* Tablet adjustments (600px - 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  /* Slightly larger than mobile but still adjusted */
+  h1[style*="font-size: 72px"] {
+    font-size: 56px !important;
+  }
+
+  div[style*="padding: 120px 80px"] {
+    padding: 80px 40px !important;
+  }
+}
+
+/* Desktop - ensure it works well (1280px - 1920px) */
+@media (min-width: 1280px) {
+  /* Your existing styles already handle desktop well */
+  /* No changes needed, just confirming it works at these resolutions */
+}
