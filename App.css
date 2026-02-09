@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  /* Stack hero section on tablets and mobile */
+  .hero {
+    flex-direction: column !important;
+  }
+  
+  .imageContainer,
+  .aboutSection {
+    flex: 1 1 100% !important;
+    min-height: 50vh;
+  }
+  
+  .aboutSection {
+    padding: 60px 40px !important;
+  }
+  
+  .name {
+    font-size: 56px !important;
+  }
+  
+  .content {
+    padding: 80px 40px !important;
+  }
+  
+  .skillsGrid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    flex-wrap: wrap;
+  }
+  
+  .tab {
+    flex: 1 1 50%;
+    padding: 20px 24px !important;
+    font-size: 12px !important;
+  }
+  
+  .name {
+    font-size: 48px !important;
+  }
+  
+  .title {
+    font-size: 20px !important;
+  }
+  
+  .aboutSection {
+    padding: 40px 24px !important;
+  }
+  
+  .content {
+    padding: 60px 24px !important;
+  }
+  
+  .cardTitle {
+    font-size: 24px !important;
+  }
+  
+  .cardSubtitle {
+    font-size: 18px !important;
+  }
+}
+
+/* Hover effects */
+button:hover {
+  opacity: 0.8;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
