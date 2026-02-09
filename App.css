@@ -21,132 +21,117 @@ body {
   }
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Responsive Design - Mobile (360px - 768px) */
+/* Mobile Responsive (360px - 600px) */
 @media (max-width: 768px) {
-  /* Hide image on mobile for cleaner professional look */
-  div[style*="flex: 0 0 40%"] {
-    display: none !important;
+  /* Hero - stack vertically with nav on top */
+  div[style*="display: flex"][style*="minHeight: 100vh"] {
+    flex-direction: column !important;
+    min-height: auto !important;
   }
 
-  /* About section - full width on mobile */
+  /* Image container */
+  div[style*="flex: 0 0 40%"] {
+    flex: 1 1 auto !important;
+    padding: 30px !important;
+    order: 2 !important;
+  }
+
+  /* Image size */
+  div[style*="width: 400px"][style*="height: 550px"] {
+    width: 250px !important;
+    height: 325px !important;
+  }
+
+  /* About section */
   div[style*="flex: 0 0 50%"] {
     flex: 1 1 100% !important;
-    padding: 40px 24px !important;
+    padding: 30px 20px !important;
+    order: 3 !important;
   }
 
-  /* Name - smaller and readable on mobile */
-  h1[style*="fontSize: 72px"],
+  /* Text sizes */
   h1[style*="font-size: 72px"] {
     font-size: 42px !important;
-    line-height: 1.1 !important;
   }
 
-  /* Title - adjust for mobile */
-  h2[style*="fontSize: 24px"],
   h2[style*="font-size: 24px"] {
     font-size: 18px !important;
-    margin-bottom: 24px !important;
   }
 
-  /* Bio - readable size on mobile */
-  p[style*="fontSize: 18px"],
   p[style*="font-size: 18px"] {
     font-size: 16px !important;
-    line-height: 1.6 !important;
   }
 
-  /* Navigation - 2 buttons per row */
-  nav[style*="display: flex"] {
+  /* Navigation */
+  nav {
     flex-wrap: wrap !important;
-    gap: 0 !important;
+    order: 1 !important;
   }
 
   nav button {
     flex: 1 1 50% !important;
-    padding: 16px 12px !important;
+    padding: 14px 10px !important;
     font-size: 11px !important;
-    border-right: 1px solid #333333 !important;
-    border-bottom: 1px solid #333333 !important;
   }
 
-  /* Contact section - wrap on mobile */
-  div[style*="gap: 32px"] {
-    gap: 20px !important;
-    justify-content: center !important;
-  }
-
-  /* Contact icons - slightly smaller */
+  /* Contact icons */
   img[style*="width: 34px"] {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  /* Content padding */
+  div[style*="padding: 120px 80px"] {
+    padding: 50px 20px !important;
+  }
+
+  /* Projects - stack vertically */
+  div[style*="gap: 50px"][style*="alignItems: flex-start"] {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  /* Project images */
+  div[style*="width: 600px"][style*="height: 400px"] {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 200px !important;
+  }
+
+  /* Card titles */
+  h3[style*="font-size: 32px"] {
+    font-size: 22px !important;
+  }
+
+  h4[style*="font-size: 20px"] {
+    font-size: 16px !important;
+  }
+
+  /* Company logos */
+  img[style*="width: 40px"][style*="height: 40px"] {
     width: 30px !important;
     height: 30px !important;
   }
 
-  /* Main content - less padding on mobile */
-  div[style*="padding: 120px 80px"] {
-    padding: 60px 20px !important;
-  }
-
-  /* Project layout - stack on mobile */
-  div[style*="gap: 50px"][style*="alignItems: flex-start"] {
-    flex-direction: column !important;
-    gap: 24px !important;
-  }
-
-  /* Project images - full width on mobile */
-  div[style*="width: 600px"][style*="height: 400px"] {
-    width: 100% !important;
-    height: auto !important;
-    min-height: 220px !important;
-  }
-
-  img[style*="objectFit: cover"] {
-    max-height: 220px !important;
-  }
-
-  /* Card titles - smaller on mobile */
-  h3[style*="fontSize: 32px"],
-  h3[style*="font-size: 32px"] {
-    font-size: 24px !important;
-  }
-
-  h4[style*="fontSize: 20px"],
-  h4[style*="font-size: 20px"] {
-    font-size: 18px !important;
-  }
-
-  /* Company logos - smaller on mobile */
-  img[style*="width: 40px"][style*="height: 40px"] {
-    width: 32px !important;
-    height: 32px !important;
-  }
-
-  /* Skills grid - single column on mobile */
+  /* Skills grid */
   div[style*="grid-template-columns: repeat(2, 1fr)"] {
     grid-template-columns: 1fr !important;
-    gap: 40px !important;
+    gap: 30px !important;
   }
 
-  /* Tech badges - smaller on mobile */
+  /* Badges */
   span[style*="padding: 8px 16px"] {
-    padding: 6px 12px !important;
+    padding: 6px 10px !important;
     font-size: 11px !important;
   }
 
-  /* Honor badges - smaller on mobile */
-  span[style*="backgroundColor: #ffffff"] {
-    padding: 6px 12px !important;
-    font-size: 11px !important;
-  }
-
-  /* Footer - adjust padding */
+  /* Footer */
   footer {
     padding: 30px 20px !important;
-    margin-top: 40px !important;
   }
 
   footer p {
@@ -154,28 +139,7 @@ html {
   }
 }
 
-/* Tablet (768px - 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
-  /* Adjust heading sizes for tablet */
-  h1[style*="fontSize: 72px"],
-  h1[style*="font-size: 72px"] {
-    font-size: 56px !important;
-  }
-
-  /* Content padding - medium */
-  div[style*="padding: 120px 80px"] {
-    padding: 80px 40px !important;
-  }
-
-  /* Project images - medium size */
-  div[style*="width: 600px"] {
-    width: 450px !important;
-    height: 300px !important;
-  }
-}
-
-/* Desktop - ensure proper display (1280px+) */
+/* Desktop (1280px - 1920px) - Already handled by inline styles */
 @media (min-width: 1280px) {
-  /* Your inline styles handle desktop perfectly */
-  /* This is just to ensure nothing breaks */
+  /* Inline styles cover this perfectly */
 }
