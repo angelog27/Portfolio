@@ -213,7 +213,7 @@ motivational competitive style of gaming. This was then formally presented.</ul>
   
   //descriptions for each tab whenever they are clicked on.
   const tabDescriptions = {
-    experience: "A look at my professional journey, including internships and hands-on engineering roles where I built real-world tools.",
+    experience: "A look at my professional journey, including internships and hands-on engineering roles where I built real world tools.",
     education: "My academic path, from high school through my current studies as a Computer Science student at LSU.",
     projects: "Personal and team projects I've built along the way, from fitness apps to web platforms.",
     skills: "The languages, frameworks, and tools I've picked up throughout my education and work experience.",
