@@ -741,7 +741,7 @@ motivational competitive style of gaming. This was then formally presented.</ul>
       {/* Footer */}
       <footer style={styles.footer}>
         <p style={styles.footerText}>© 2026 Angelo Gonzales</p>
-        <p style={styles.footerText}>Last updated: February 9, 2026</p>
+        <p style={styles.footerText}>Last updated: February 19, 2026</p>
       </footer>
     </div>
   );
