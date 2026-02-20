@@ -59,6 +59,14 @@ const Portfolio = () => {
   const [activeTab, setActiveTab] = useState(null);
   const [isImageHovered, setIsImageHovered] = useState(false);
   const [hoveredProject, setHoveredProject] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  // Window resize listener
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   //CSS keyframes for animations
   useEffect(() => {
@@ -187,7 +195,7 @@ const Portfolio = () => {
       image: '/steam.png', //PICTURE PATH
       description: <li>
         <ul> In a group Software design/development project me and a team of engineers built and designed a web application
-using API’s, Firebase, and a Python script to fetch and display Steam user achievements. Allowed for a
+using API's, Firebase, and a Python script to fetch and display Steam user achievements. Allowed for a
 motivational competitive style of gaming. This was then formally presented.</ul>
       </li>,
       tech: ['html', 'css', 'Python', 'Steam API', 'JavaScript']
@@ -211,17 +219,303 @@ motivational competitive style of gaming. This was then formally presented.</ul>
     skills: "The languages, frameworks, and tools I've picked up throughout my education and work experience.",
   };
 
+  // Generate responsive styles based on window width
+  const styles = {
+    container: {
+      minHeight: '100vh',
+      backgroundColor: '#000000',
+      color: '#ffffff',
+      fontFamily: '"Helvetica Neue", Arial, sans-serif',
+      position: 'relative',
+      zIndex: 1,
+    },
+    hero: {
+      display: 'flex',
+      position: 'relative',
+      flexDirection: windowWidth <= 1279 ? 'column' : 'row',
+    },
+    imageContainer: {
+      flex: windowWidth <= 1279 ? 'none' : '0 0 35%',
+      width: windowWidth <= 1279 ? '100%' : 'auto',
+      backgroundColor: '#000000',
+      display: 'flex',
+      alignItems: 'top',
+      justifyContent: 'center',
+      position: 'relative',
+      padding: windowWidth <= 600 ? '30px 20px' : windowWidth <= 1279 ? '40px' : '80px',
+    },
+    imagePlaceholder: {
+      width: windowWidth <= 600 ? '220px' : windowWidth <= 1279 ? '260px' : '400px',
+      height: windowWidth <= 600 ? '290px' : windowWidth <= 1279 ? '350px' : '550px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      overflow: 'hidden',
+      backgroundColor: '#111111',
+      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+      cursor: 'pointer',
+    },
+    image: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      filter: 'grayscale(100%)',
+      border: '1px solid #333333',
+      transition: 'filter 0.3s ease',
+    },
+    aboutSection: {
+      flex: windowWidth <= 1279 ? 'none' : '0 0 50%',
+      width: windowWidth <= 1279 ? '100%' : 'auto',
+      display: 'flex',
+      alignItems: 'center',
+      padding: windowWidth <= 600 ? '30px 20px' : windowWidth <= 1279 ? '40px' : '80px',
+      backgroundColor: '#000000',
+    },
+    aboutContent: {
+      maxWidth: windowWidth <= 1279 ? '100%' : '600px',
+    },
+    name: {
+      fontSize: windowWidth <= 600 ? '36px' : windowWidth <= 1279 ? '48px' : '72px',
+      fontWeight: '700',
+      margin: '0 0 16px 0',
+      letterSpacing: windowWidth <= 600 ? '-1px' : '-2px',
+      lineHeight: '1',
+    },
+    title: {
+      fontSize: windowWidth <= 600 ? '18px' : '24px',
+      fontWeight: '300',
+      margin: '0 0 40px 0',
+      color: '#999999',
+      letterSpacing: '1px',
+    },
+    bio: {
+      fontSize: windowWidth <= 600 ? '15px' : '18px',
+      lineHeight: '1.8',
+      margin: '0 0 40px 0',
+      color: '#cccccc',
+    },
+    contact: {
+      display: 'flex',
+      flexDirection: windowWidth <= 600 ? 'column' : 'row',
+      gap: windowWidth <= 600 ? '16px' : '32px',
+      alignItems: windowWidth <= 600 ? 'center' : 'flex-start',
+    },
+    contactHeader: {
+      width: windowWidth <= 600 ? '100%' : 'auto',
+      textAlign: windowWidth <= 600 ? 'center' : 'left',
+    },
+    contactLink: {
+      color: '#ffffff',
+      textDecoration: 'none',
+      fontSize: '16px',
+      fontWeight: '500',
+      borderBottom: '2px solid #ffffff',
+      paddingBottom: '4px',
+      transition: 'opacity 0.3s',
+      cursor: 'pointer',
+    },
+    nav: {
+      display: 'flex',
+      justifyContent: 'flex-start',
+      flexWrap: windowWidth <= 600 ? 'wrap' : 'nowrap',
+      gap: '0',
+      backgroundColor: '#000000',
+      borderBottom: '1px solid #333333',
+      marginBottom: '30px',
+    },
+    tab: {
+      padding: windowWidth <= 600 ? '12px 10px' : '12px 24px',
+      backgroundColor: 'transparent',
+      border: 'none',
+      color: '#666666',
+      fontSize: windowWidth <= 600 ? '11px' : '14px',
+      fontWeight: '600',
+      letterSpacing: '2px',
+      textTransform: 'uppercase',
+      cursor: 'pointer',
+      transition: 'all 0.3s',
+      borderRight: '1px solid #333333',
+      flex: windowWidth <= 600 ? '1 1 48%' : 'none',
+    },
+    homeTab: {
+      padding: '8px 16px',
+      fontSize: '12px',
+    },
+    activeTab: {
+      color: '#ffffff',
+      backgroundColor: '#111111',
+    },
+    content: {
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: windowWidth <= 600 ? '40px 20px' : windowWidth <= 1279 ? '60px 40px' : '120px 80px',
+    },
+    section: {
+      animation: 'fadeIn 0.5s ease-in',
+    },
+    card: {
+      marginBottom: '60px',
+      paddingBottom: '60px',
+      borderBottom: '1px solid #222222',
+    },
+    cardTitle: {
+      fontSize: windowWidth <= 600 ? '22px' : '32px',
+      fontWeight: '600',
+      margin: '0 0 8px 0',
+      letterSpacing: '-1px',
+    },
+    cardSubtitle: {
+      fontSize: windowWidth <= 600 ? '16px' : '20px',
+      fontWeight: '400',
+      margin: '0 0 8px 0',
+      color: '#999999',
+    },
+    cardPeriod: {
+      fontSize: '14px',
+      color: '#666666',
+      margin: '0 0 20px 0',
+      letterSpacing: '1px',
+    },
+    cardDescription: {
+      fontSize: windowWidth <= 600 ? '14px' : '16px',
+      lineHeight: '1.8',
+      color: '#cccccc',
+      margin: '0',
+    },
+    honors: {
+      marginTop: '20px',
+    },
+    honorsLabel: {
+      fontSize: '14px',
+      color: '#999999',
+      margin: '0 0 12px 0',
+      fontWeight: '600',
+      letterSpacing: '1px',
+    },
+    honorBadge: {
+      display: 'inline-block',
+      padding: '8px 16px',
+      backgroundColor: '#ffffff',
+      color: '#000000',
+      fontSize: '12px',
+      fontWeight: '600',
+      marginRight: '12px',
+      marginBottom: '8px',
+      letterSpacing: '0.5px',
+    },
+    techStack: {
+      marginTop: '20px',
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '12px',
+    },
+    techBadge: {
+      padding: '8px 16px',
+      border: '1px solid #ffffff',
+      color: '#ffffff',
+      fontSize: '12px',
+      fontWeight: '500',
+      letterSpacing: '0.5px',
+    },
+    skillsGrid: {
+      display: 'grid',
+      gridTemplateColumns: windowWidth <= 600 ? '1fr' : 'repeat(2, 1fr)',
+      gap: windowWidth <= 600 ? '30px' : '60px',
+    },
+    skillCategory: {
+      marginBottom: '40px',
+    },
+    skillCategoryTitle: {
+      fontSize: '18px',
+      fontWeight: '600',
+      margin: '0 0 24px 0',
+      letterSpacing: '1px',
+      color: '#ffffff',
+      borderBottom: '2px solid #ffffff',
+      paddingBottom: '12px',
+    },
+    skillsList: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '12px',
+    },
+    skillItem: {
+      padding: '12px 20px',
+      backgroundColor: '#111111',
+      color: '#ffffff',
+      fontSize: '14px',
+      fontWeight: '500',
+      border: '1px solid #333333',
+      letterSpacing: '0.5px',
+    },
+    projectLayout: {
+      display: 'flex',
+      flexDirection: windowWidth <= 1279 ? 'column' : 'row',
+      gap: windowWidth <= 600 ? '20px' : windowWidth <= 1279 ? '30px' : '50px',
+      alignItems: 'flex-start',
+    },
+    projectImageContainer: {
+      width: windowWidth <= 600 ? '100%' : windowWidth <= 1279 ? '100%' : '600px',
+      height: windowWidth <= 600 ? '220px' : windowWidth <= 1279 ? '300px' : '400px',
+      flexShrink: 0,
+      overflow: 'hidden',
+      backgroundColor: '#111111',
+      border: '1px solid #333333',
+      cursor: 'pointer',
+      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    },
+    projectImage: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+    },
+    projectDetails: {
+      flex: 1,
+    },
+    logo: {
+      width: '24px',
+      height: '24px',
+      marginRight: '8px',
+      verticalAlign: 'middle',
+    },
+    companyLogo: {
+      width: '40px',
+      height: '40px',
+      marginRight: '12px',
+      verticalAlign: 'middle',
+      objectFit: 'contain',
+    },
+    contactIcon: {
+      width: '34px',
+      height: '34px',
+    },
+    footer: {
+      backgroundColor: '#000000',
+      borderTop: '1px solid #333333',
+      padding: '40px 20px',
+      textAlign: 'center',
+      marginTop: '80px',
+    },
+    footerText: {
+      color: '#666666',
+      fontSize: windowWidth <= 600 ? '12px' : '14px',
+      margin: '8px 0',
+      letterSpacing: '1px',
+    },
+  };
+
   return (
     <div style={styles.container}>
       {/* Animated Star Background */}
       <StarField />
 
       {/* Hero Section */}
-      <div style={styles.hero}>
+      <div style={styles.hero} className="hero">
         {/* Left - Large Image (only on Home) */}
         {activeTab === null && (
-          <div style={styles.imageContainer}>
+          <div style={styles.imageContainer} className="image-container">
             <div
+              className="image-placeholder"
               style={{
                 ...styles.imagePlaceholder,
                 transform: isImageHovered ? 'scale(1.05)' : 'scale(1)',
@@ -243,15 +537,15 @@ motivational competitive style of gaming. This was then formally presented.</ul>
         )}
 
         {/* Right - About Me / Tab Header */}
-        <div style={{
+        <div className="about-section" style={{
           ...styles.aboutSection,
           ...(activeTab !== null ? { flex: '1', justifyContent: 'center', padding: '60px 80px' } : {})
         }}>
-          <div style={{
+          <div className="about-content" style={{
             ...styles.aboutContent,
             ...(activeTab !== null ? { textAlign: 'center', maxWidth: '1200px' } : {})
           }}>
-            <nav style={{
+            <nav className="nav-bar" style={{
               ...styles.nav,
               ...(activeTab !== null ? { justifyContent: 'center' } : {})
             }}>
@@ -292,6 +586,15 @@ motivational competitive style of gaming. This was then formally presented.</ul>
                   I'm very passionate in what I do, and I'm always looking for new ways to learn and improve my
                   problem solving skills. Thanks for visiting.
                 </p>
+                <h1 style={styles.name}>Why me?</h1>
+                <p style={styles.bio}>
+                  I am a <b>dedicated</b> and <b>passionate</b> software engineering student with strong technical skills.
+                  Not only do I have the experience and knowledge to excel in software engineering roles, but
+                   I also have the drive and work ethic to continuously learn and grow. 
+                   I am a <b>team player</b> who thrives in collaborative environments, and I am always eager to contribute my skills to help achieve team goals.
+                    With my combination of technical expertise, passion for software development, and strong work ethic, I believe I would be a valuable asset to any software engineering team.
+                    As someone who has done the dirty work of playing sports and leading teams,I have developed a strong sense of discipline, teamwork, and leadership that I bring to my software engineering work. I am not afraid to take on challenges and put in the hard work necessary to achieve success, and I am always looking for ways to improve and grow as an engineer.
+                </p>
                 <div style={styles.contact}>
                   <h4 style={styles.contactHeader}>Connect with me:</h4>
                   <a href="mailto:gonzales12098@gmail.com" style={styles.contactLink}><img src="/email.webp" alt="Email" style={styles.contactIcon} /></a>
@@ -310,7 +613,7 @@ motivational competitive style of gaming. This was then formally presented.</ul>
       </div>
 
       {/* Content Sections */}
-      <div style={styles.content}>
+      <div style={styles.content} className="content-area">
         {activeTab === 'experience' && (
           <div style={styles.section}>
             {experience.map((exp, index) => (
@@ -366,9 +669,10 @@ motivational competitive style of gaming. This was then formally presented.</ul>
         animationDelay: `${index * 0.15}s`,
         opacity: 0,
       }}>
-        <div style={styles.projectLayout}>
+        <div style={styles.projectLayout} className="project-layout">
           {/* Project Image with Hover Effect - LEFT SIDE */}
-          <div 
+          <div
+            className="project-image-wrapper"
             style={{
               ...styles.projectImageContainer,
               transform: hoveredProject === index ? 'scale(1.05)' : 'scale(1)',
@@ -413,7 +717,7 @@ motivational competitive style of gaming. This was then formally presented.</ul>
 
         {activeTab === 'skills' && (
           <div style={styles.section}>
-            <div style={styles.skillsGrid}>
+            <div style={styles.skillsGrid} className="skills-grid-container">
               {Object.entries(skills).map(([category, items], index) => (
                 <div key={category} style={{
                   ...styles.skillCategory,
@@ -441,281 +745,6 @@ motivational competitive style of gaming. This was then formally presented.</ul>
       </footer>
     </div>
   );
-};
-      
-
-
-// Styles for the Portfolio component
-const styles = {
-  container: {
-    minHeight: '100vh',
-    backgroundColor: '#000000',
-    color: '#ffffff',
-    fontFamily: '"Helvetica Neue", Arial, sans-serif',
-    position: 'relative',
-    zIndex: 1,
-  },
-  hero: {
-    display: 'flex',
-    position: 'relative',
-  },
-  imageContainer: {
-    flex: '0 0 40%',
-    backgroundColor: '#000000',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-    padding: '80px',
-  },
-  imagePlaceholder: {
-    width: '400px',
-    height: '550px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden',
-    backgroundColor: '#111111',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-    cursor: 'pointer',
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    filter: 'grayscale(100%)',
-    border: '1px solid #333333',
-    transition: 'filter 0.3s ease',
-  },
-  aboutSection: {
-    flex: '0 0 50%',
-    display: 'flex',
-    alignItems: 'center',
-    padding: '80px',
-    backgroundColor: '#000000',
-  },
-  aboutContent: {
-    maxWidth: '600px',
-  },
-  name: {
-    fontSize: '72px',
-    fontWeight: '700',
-    margin: '0 0 16px 0',
-    letterSpacing: '-2px',
-    lineHeight: '1',
-  },
-  title: {
-    fontSize: '24px',
-    fontWeight: '300',
-    margin: '0 0 40px 0',
-    color: '#999999',
-    letterSpacing: '1px',
-  },
-  bio: {
-    fontSize: '18px',
-    lineHeight: '1.8',
-    margin: '0 0 40px 0',
-    color: '#cccccc',
-  },
-  contact: {
-    display: 'flex',
-    gap: '32px',
-  },
-  contactLink: {
-    color: '#ffffff',
-    textDecoration: 'none',
-    fontSize: '16px',
-    fontWeight: '500',
-    borderBottom: '2px solid #ffffff',
-    paddingBottom: '4px',
-    transition: 'opacity 0.3s',
-    cursor: 'pointer',
-  },
-  nav: {
-    display: 'flex',
-    justifyContent: 'flex-start',
-    gap: '0',
-    backgroundColor: '#000000',
-    borderBottom: '1px solid #333333',
-    marginBottom: '30px',
-  },
-  tab: {
-    padding: '12px 24px',
-    backgroundColor: 'transparent',
-    border: 'none',
-    color: '#666666',
-    fontSize: '14px',
-    fontWeight: '600',
-    letterSpacing: '2px',
-    textTransform: 'uppercase',
-    cursor: 'pointer',
-    transition: 'all 0.3s',
-    borderRight: '1px solid #333333',
-  },
-  homeTab: {
-    padding: '8px 16px',
-    fontSize: '12px',
-  },
-  activeTab: {
-    color: '#ffffff',
-    backgroundColor: '#111111',
-  },
-  content: {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '120px 80px',
-  },
-  section: {
-    animation: 'fadeIn 0.5s ease-in',
-  },
-  card: {
-    marginBottom: '60px',
-    paddingBottom: '60px',
-    borderBottom: '1px solid #222222',
-  },
-  cardTitle: {
-    fontSize: '32px',
-    fontWeight: '600',
-    margin: '0 0 8px 0',
-    letterSpacing: '-1px',
-  },
-  cardSubtitle: {
-    fontSize: '20px',
-    fontWeight: '400',
-    margin: '0 0 8px 0',
-    color: '#999999',
-  },
-  cardPeriod: {
-    fontSize: '14px',
-    color: '#666666',
-    margin: '0 0 20px 0',
-    letterSpacing: '1px',
-  },
-  cardDescription: {
-    fontSize: '16px',
-    lineHeight: '1.8',
-    color: '#cccccc',
-    margin: '0',
-  },
-  honors: {
-    marginTop: '20px',
-  },
-  honorsLabel: {
-    fontSize: '14px',
-    color: '#999999',
-    margin: '0 0 12px 0',
-    fontWeight: '600',
-    letterSpacing: '1px',
-  },
-  honorBadge: {
-    display: 'inline-block',
-    padding: '8px 16px',
-    backgroundColor: '#ffffff',
-    color: '#000000',
-    fontSize: '12px',
-    fontWeight: '600',
-    marginRight: '12px',
-    marginBottom: '8px',
-    letterSpacing: '0.5px',
-  },
-  techStack: {
-    marginTop: '20px',
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '12px',
-  },
-  techBadge: {
-    padding: '8px 16px',
-    border: '1px solid #ffffff',
-    color: '#ffffff',
-    fontSize: '12px',
-    fontWeight: '500',
-    letterSpacing: '0.5px',
-  },
-  skillsGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '60px',
-  },
-  skillCategory: {
-    marginBottom: '40px',
-  },
-  skillCategoryTitle: {
-    fontSize: '18px',
-    fontWeight: '600',
-    margin: '0 0 24px 0',
-    letterSpacing: '1px',
-    color: '#ffffff',
-    borderBottom: '2px solid #ffffff',
-    paddingBottom: '12px',
-  },
-  skillsList: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '12px',
-  },
-  skillItem: {
-    padding: '12px 20px',
-    backgroundColor: '#111111',
-    color: '#ffffff',
-    fontSize: '14px',
-    fontWeight: '500',
-    border: '1px solid #333333',
-    letterSpacing: '0.5px',
-  },
-  projectLayout: {
-  display: 'flex',
-  gap: '50px',
-  alignItems: 'flex-start',
-},
-projectImageContainer: {
-  width: '600px',
-  height: '400px',
-  flexShrink: 0,
-  overflow: 'hidden',
-  backgroundColor: '#111111',
-  border: '1px solid #333333',
-  cursor: 'pointer',
-  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-},
-projectImage: {
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-},
-projectDetails: {
-  flex: 1,
-},
-logo: {
-  width: '24px',
-  height: '24px',
-  marginRight: '8px',
-  verticalAlign: 'middle',
-},
-companyLogo: {
-  width: '40px',
-  height: '40px',
-  marginRight: '12px',
-  verticalAlign: 'middle',
-  objectFit: 'contain',
-},
-contactIcon: {
-    width: '34px',
-    height: '34px',
-  },
-  footer: {
-    backgroundColor: '#000000',
-    borderTop: '1px solid #333333',
-    padding: '40px 20px',
-    textAlign: 'center',
-    marginTop: '80px',
-  },
-  footerText: {
-    color: '#666666',
-    fontSize: '14px',
-    margin: '8px 0',
-    letterSpacing: '1px',
-  },
 };
 
 export default Portfolio;

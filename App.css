@@ -25,107 +25,182 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Mobile Responsive (360px - 600px) */
-@media (max-width: 768px) {
-  /* Force flex direction change */
-  body > div > div:first-of-type {
-    display: flex !important;
+/* ─── Desktop: fix image overflow at 1280px–1500px ─────────────────────────── */
+@media (min-width: 1280px) and (max-width: 1500px) {
+  .image-container {
+    padding: 40px 30px !important;
+  }
+
+  .image-placeholder {
+    width: 280px !important;
+    height: 380px !important;
+  }
+
+  .about-section {
+    padding: 40px 50px !important;
+  }
+}
+
+/* ─── Tablet / small laptop: 601px – 1279px (stack vertically) ──────────────── */
+@media (min-width: 601px) and (max-width: 1279px) {
+  .hero {
     flex-direction: column !important;
+  }
+
+  .image-container {
+    flex: none !important;
+    width: 100% !important;
+    padding: 40px !important;
+    justify-content: center !important;
+  }
+
+  .image-placeholder {
+    width: 260px !important;
+    height: 350px !important;
+  }
+
+  .about-section {
+    flex: none !important;
+    width: 100% !important;
+    padding: 40px !important;
+  }
+
+  .about-content {
+    max-width: 100% !important;
+  }
+
+  .content-area {
+    padding: 60px 40px !important;
+  }
+
+  .project-layout {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+
+  .project-image-wrapper {
+    width: 100% !important;
+    height: 300px !important;
+  }
+}
+
+/* ─── Mobile: 360px – 600px (COMPLETE OVERRIDE) ────────────────────────────── */
+@media (max-width: 600px) {
+  /* Prevent horizontal scroll */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Force hero to stack vertically */
+  .hero {
+    flex-direction: column !important;
+    width: 100% !important;
     min-height: auto !important;
   }
 
-  /* All direct children of hero get full width */
-  body > div > div:first-of-type > * {
-    flex: 1 1 100% !important;
+  /* Image section - centered and sized properly */
+  .image-container {
+    flex: none !important;
     width: 100% !important;
     max-width: 100% !important;
     padding: 30px 20px !important;
-  }
-
-  /* Image wrapper */
-  body > div > div:first-of-type > div:first-child div {
-    width: 250px !important;
-    height: 325px !important;
-    margin: 0 auto !important;
-  }
-
-  /* Make sure image is visible */
-  body > div > div:first-of-type > div:first-child {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
   }
 
-  /* Text sizes */
-  h1 {
-    font-size: 42px !important;
+  .image-placeholder {
+    width: 220px !important;
+    height: 290px !important;
+    margin: 0 auto !important;
   }
 
-  h2 {
-    font-size: 18px !important;
+  /* Text/About section - full width, proper padding */
+  .about-section {
+    flex: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 20px !important;
   }
 
-  p {
-    font-size: 16px !important;
+  .about-content {
+    max-width: 100% !important;
+    width: 100% !important;
   }
 
-  /* Navigation - make it wrap */
-  nav {
+  /* Navigation - full width stacked buttons */
+  .nav-bar {
     display: flex !important;
     flex-wrap: wrap !important;
+    width: 100% !important;
+    padding: 10px !important;
   }
 
-  nav button {
-    flex: 1 1 50% !important;
-    min-width: 50% !important;
-    padding: 14px 8px !important;
-    font-size: 10px !important;
-  }
-
-  /* Contact icons */
-  a img {
-    width: 28px !important;
-    height: 28px !important;
+  .nav-bar button {
+    flex: 1 1 48% !important;
+    margin: 4px !important;
+    padding: 12px 10px !important;
+    font-size: 11px !important;
   }
 
   /* Content sections */
-  body > div > div:last-child {
-    padding: 50px 20px !important;
-  }
-
-  /* Project cards - force column layout */
-  body > div > div:last-child > div > div > div > div {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
-  /* Project images - full width */
-  body > div > div:last-child img {
+  .content-area {
+    padding: 30px 20px !important;
     width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
   }
 
-  /* Make sure project text is visible */
-  body > div > div:last-child p,
-  body > div > div:last-child ul,
-  body > div > div:last-child li {
-    display: block !important;
-    font-size: 15px !important;
+  /* Projects */
+  .project-layout {
+    flex-direction: column !important;
+    gap: 20px !important;
   }
 
-  /* Card titles */
+  .project-image-wrapper {
+    width: 100% !important;
+    height: 220px !important;
+  }
+
+  /* Skills grid */
+  .skills-grid-container {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* Typography adjustments */
+  h1 {
+    font-size: 32px !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  h2 {
+    font-size: 16px !important;
+  }
+
   h3 {
-    font-size: 24px !important;
+    font-size: 20px !important;
   }
 
   h4 {
-    font-size: 18px !important;
+    font-size: 15px !important;
   }
 
-  /* Skills grid - single column */
-  body > div > div:last-child > div > div {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
+  p, li {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Connect icons */
+  .social-links,
+  [class*="connect"] {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 15px !important;
+  }
+
+  .social-links img,
+  [class*="connect"] img {
+    width: 50px !important;
+    height: 50px !important;
   }
 }
