@@ -104,8 +104,31 @@ const Portfolio = () => {
       period: 'June 2026 - August 2026',
       location: 'Reserve, LA',
       description: [
+
         <li>
-          TBD - Role Accepted
+          Architected and deployed an automated SSL/TLS certificate management 
+          system using Caddy Server across a fleet of company dredges, replacing 
+          manual certificate workflows with no downtime automatic renewal via 
+          the ACME protocol.
+        </li>,
+        <li>
+          Built a SaltStack pipeline to remotely provision, 
+          configure, and manage Caddy across multiple dredge systems 
+          (Salt Minions), using Pillar data to 
+          deliver unique per dredge Caddyfile configurations from a central Salt Master.
+        </li>,
+        <li>
+          Designed and maintained Salt state files, top.sls mappings, and per device 
+          Pillar definitions to enable software with only one command
+        </li>,
+        <li>
+          Collaborated daily with automation engineers to design and implement 
+          industrial network infrastructure, gaining hands on experience with 
+          Red Lion devices,Guacamole servers, HMI's and linux based systems.
+        </li>,
+        <li>
+          Constructed a react based dashboard using fast API as well as python focused basckend
+          to monitor saltMinions, their status as well as the health of our SaltMaster
         </li>
       ]
     },
@@ -116,8 +139,20 @@ const Portfolio = () => {
       period: 'March 8th 2026 - March 14th 2026',
       location: 'Orlando, FL',
       description: [
-        <li> 
-          TBD - Role Accepted 
+        <li>
+          Operated in a high crowd volume, guest role at Walt Disney World, 
+          developing strong communication and situational problem solving skills 
+          while managing guest experience across a fast paced theme park environment.
+        </li>,
+        <li>
+          Gained behind the scenes exposure to large scale park operations, 
+          including ride workflows, crew coordination, and the operational 
+          standards that drive one of the world's most visited entertainment venues.
+        </li>,
+        <li>
+          Completed a competitive leadership development workshop at the University 
+          of Florida alongside college students from across the country, studying 
+          leadership styles, team dynamics, and decision making under pressure.
         </li>
       ]
     },
@@ -184,11 +219,31 @@ const Portfolio = () => {
     },
 
     {
-      name: 'Reelette',
-      image: '/reelette.png', //PICTURE PATH
-      description: 'Movie discovery platform combining streaming integration with social features and roulette-style selection',
-      tech: ['React', 'API Integration', 'JavaScript']
-    },
+  name: 'Reelette',
+  image: '/reelette.png',
+  url: 'https://reelette-movie.com',
+  description: (
+    <>
+      <li>
+        A full stack movie discovery app built to solve the "what do we watch tonight?" 
+        problem. Users select their streaming services on signup and Reelette filters 
+        everything down to only what they can actually watch.
+      </li>
+      <li>
+        Features a signature roulette wheel that randomly picks a movie based on 
+        filters you set like genre, runtime, and rating. Also includes a personal 
+        Library, a Discover tab, Movie Groups for watching with friends, and an AI 
+        agent called The Director that gives personalized recommendations through chat.
+      </li>
+      <li>
+        My junior year capstone project at LSU that I have continued building past the 
+        class. Still actively adding features today. Feel free to check it out and make 
+        an account.
+      </li>
+    </>
+  ),
+  tech: ['React', 'TypeScript', 'Python', 'Flask', 'Firebase', 'TMDb API', 'Claude AI']
+},
 
     {
       name: 'Steam Achievement Tracker',
@@ -204,12 +259,14 @@ motivational competitive style of gaming. This was then formally presented.</ul>
   
   //Skills tab to show my frontend, backend and programming language skills in a nice format.
   const skills = {
-    'Languages': ['Python', 'C', 'JavaScript', 'Java', 'Assembly'],
-    'Frontend': ['React', 'HTML/CSS', 'Vite'],
-    'Backend': ['Flask'],
-    'Tools & Technologies': ['Git', 'Docker', 'Unity', 'Firebase', 'GDB'],
-    'Databases': ['Firebase Firestore']
-  };
+  'Languages': ['Python', 'C', 'JavaScript', 'TypeScript', 'Java', 'Assembly', 'YAML', 'Bash'],
+  'Frontend': ['React', 'HTML/CSS', 'Vite', 'Tailwind CSS'],
+  'Backend': ['Flask', 'FastAPI', 'Node.js'],
+  'DevOps & Infrastructure': ['SaltStack', 'Linux', 'WSL', 'Caddy Server', 'Systemd', 'Tailscale'],
+  'Tools & Technologies': ['Git', 'Docker', 'Unity', 'GDB', 'PuTTY'],
+  'Databases & Cloud': ['Firebase Firestore', 'Firebase Auth', 'Google Drive API'],
+  'APIs & Integrations': ['TMDb API', 'Cradlepoint NetCloud API', 'Smartsheet API', 'Tailscale API', 'Gmail API'],
+};
   
   //descriptions for each tab whenever they are clicked on.
   const tabDescriptions = {
@@ -748,3 +805,4 @@ motivational competitive style of gaming. This was then formally presented.</ul>
 };
 
 export default Portfolio;
+
